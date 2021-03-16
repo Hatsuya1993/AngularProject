@@ -1,0 +1,36 @@
+<div class="container">
+  <form class="mt-3">
+    <p class="bg-danger text-white rounded p-2" *ngIf="timer">{{please_include_all_details | titlecase}}</p>
+    <div class="mb-3">
+      <label for="exampleInputName1" class="form-label">{{name | titlecase}}</label>
+      <input [formControl]='inputName' class="form-control" id="exampleInputName1">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputAge1" class="form-label">{{age | titlecase}}</label>
+      <input [formControl]='inputAge' class="form-control" id="exampleInputAge1">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputCondition1" class="form-label">{{condition | titlecase}}</label>
+      <input [formControl]='inputCondition' class="form-control" id="exampleInputCondition1">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">{{email | titlecase}} {{address}}</label>
+      <input [formControl]='inputEmail' type="email" class="form-control"
+        [class.is-invalid]="inputEmail.invalid && inputEmail.touched" id="exampleInputEmail1">
+    </div>
+    <div *ngIf="(inputEmail.invalid && inputEmail.touched) || inputEmail.dirty">
+      <small *ngIf="inputEmail.errors?.pattern" class="text-danger">{{please_provide_a_valid_email | titlecase}}</small>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">{{password | titlecase}}</label>
+      <input [class.is-invalid]="inputPassword.invalid && inputPassword.touched" [formControl]='inputPassword'
+        type="password" class="form-control" id="exampleInputPassword1">
+    </div>
+    <div *ngIf="(inputPassword.invalid && inputPassword.touched)">
+      <small *ngIf="inputPassword.errors?.pattern" class="text-danger">{{password_requirement | titlecase}}</small>
+    </div>
+    <button [disabled]="inputEmail.invalid || inputPassword.invalid" id="registerButton" type="button"
+      (click)="submitDetails()" class="btn btn-primary">{{register |
+      titlecase}}</button>
+  </form>
+</div>

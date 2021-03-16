@@ -1,0 +1,24 @@
+<div class="container">
+  <form class="mt-3">
+    <p id="successRegister" class="bg-success text-white rounded p-2" *ngIf="successRegister">{{successfully_register |
+      titlecase}}</p>
+    <p class="bg-success text-white rounded p-2" *ngIf="applied">{{successfully_applied | titlecase}}</p>
+    <p id="errorLogin" class="bg-danger text-white rounded p-2" *ngIf="errorLogin">{{error_login_info | titlecase}}</p>
+    <p class="bg-danger text-white rounded p-2" *ngIf="error">{{please_include_all_details | titlecase}}</p>
+    <div class="mb-3">
+      <label id="name" for="exampleInputEmail1" class="form-label">{{name | titlecase}}</label>
+      <input [formControl]='inputName' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label id="password" for="exampleInputPassword1" class="form-label">{{password | titlecase}}</label>
+      <input [formControl]='inputPassword' type="password" class="form-control" id="exampleInputPassword1">
+    </div>
+    <div>
+      <button id="submitButton" type="button" (click)="submitDetails()" class="btn btn-primary">{{submit |
+        titlecase}}</button>
+      <button type="button" id="loginGuestButton" routerLink="/guestLogin" class="btn btn-primary m-1">{{login_as_guest
+        | titlecase}}</button>
+    </div>
+
+  </form>
+</div>

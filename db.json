@@ -1,0 +1,8 @@
+{
+  "data": [
+    { "email": "Alex@hotmail.com", "name": "Alex", "password": "Alex", "age": 12, "condition": "asthma" },
+    { "email": "Mary@hotmail.com", "name": "Mary", "password": "Mary", "age": 28, "condition": "healthy" },
+    { "email": "James@hotmail.com", "name": "James", "password": "James", "age": 54, "condition": "diabetes" },
+    { "email": "Zack@hotmail.com", "name": "Zack", "password": "Zack", "age": 80, "condition": "hbp" }
+  ]
+}

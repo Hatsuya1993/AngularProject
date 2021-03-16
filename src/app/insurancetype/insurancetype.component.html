@@ -1,0 +1,13 @@
+<div class="container mt-3">
+    <p class="bg-danger text-white rounded p-2" *ngIf="pickOne">{{at_least_one_insurance_is_required | titlecase}}</p>
+    <mat-form-field id="insuranceSelect" class="w-100" appearance="fill">
+        <mat-label>{{pick_insurance_type | titlecase}}</mat-label>
+        <mat-select [formControl]="selection" (selectionChange)="checkInsurance($event)" multiple [(value)]="selected">
+            <mat-option *ngFor="let list of insuranceList" [value]="list" [disabled]="list == 'not applicable'">
+                {{list}}
+            </mat-option>
+            <button id="submitSelection" class="btn btn-primary m-3" (click)="submitInsurance()"
+                type="button">Submit</button>
+        </mat-select>
+    </mat-form-field>
+</div>
