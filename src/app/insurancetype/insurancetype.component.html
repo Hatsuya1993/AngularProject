@@ -3,9 +3,11 @@
     <mat-form-field id="insuranceSelect" class="w-100" appearance="fill">
         <mat-label>{{pick_insurance_type | titlecase}}</mat-label>
         <mat-select [formControl]="selection" (selectionChange)="checkInsurance($event)" multiple [(value)]="selected">
-            <mat-option *ngFor="let list of insuranceList" [value]="list" [disabled]="list == 'not applicable'">
-                {{list}}
-            </mat-option>
+            <ng-container *ngFor="let list of insuranceList">
+                <mat-option [value]="list" *ngIf="list != 'Not Applicable'">
+                    {{list}}
+                </mat-option>
+            </ng-container>
             <button id="submitSelection" class="btn btn-primary m-3" (click)="submitInsurance()"
                 type="button">Submit</button>
         </mat-select>

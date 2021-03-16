@@ -27,13 +27,14 @@ export class RegisterUserComponent implements OnInit {
   please_include_all_details = GlobalConstantsRegister.PLEASE_INCLUDE_ALL_DETAILS
   please_provide_a_valid_email = GlobalConstantsRegister.PLEASE_PROVIDE_A_VALID_EMAIL
   password_requirement = GlobalConstantsRegister.PASSWORD_REQUIREMENT
+  numbers_only_not_exceeding_3 = GlobalConstantsRegister.NUMBERS_ONLY_NOT_EXCEEDING_3
 
   successRegister: boolean = false
 
   inputEmail = new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")])
   inputPassword = new FormControl('', [Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')])
   inputName = new FormControl('')
-  inputCondition = new FormControl('')
+  inputCondition = new FormControl('', [Validators.required, Validators.pattern(/^-?(0|[1-3]\d*)?$/)])
   inputAge = new FormControl('')
 
   constructor(public mainService: MainService, private http: HttpClient, private route: Router) {
@@ -63,7 +64,7 @@ export class RegisterUserComponent implements OnInit {
       name: this.inputName.value,
       password: this.inputPassword.value,
       age: parseInt(this.inputAge.value),
-      condition: this.inputCondition.value
+      condition: parseInt(this.inputCondition.value)
     }).toPromise().then((data: any) => {
       this.successRegister = true
       this.mainService.successRegister = this.successRegister

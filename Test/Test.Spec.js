@@ -21,7 +21,7 @@ describe('Test Suite', function() {
 
     // browser.sleep(1000)
 
-    element(by.xpath('//*[@id="exampleInputCondition1"]')).sendKeys('Healthy')
+    element(by.xpath('//*[@id="exampleInputCondition1"]')).sendKeys(1)
 
     // browser.sleep(1000)
 
@@ -89,11 +89,9 @@ describe('Test Suite', function() {
 
     // browser.sleep(500)
 
-    var name = element(by.xpath('//*[@id="name"]'))
-    var password = element(by.xpath('//*[@id="password"]'))
+    var greeting = element(by.xpath('//*[@id="greeting"]'))
 
-    expect(name.getText()).toEqual('Name')
-    expect(password.getText()).toEqual('Password')
+    expect(greeting.getText()).toEqual('Hello Hazrul')
 
     // browser.sleep(1000)
 
@@ -149,7 +147,7 @@ describe('Test Suite', function() {
 
     // browser.sleep(1000)
 
-    element(by.xpath('//*[@id="exampleInputCondition1"]')).sendKeys('Healthy')
+    element(by.xpath('//*[@id="exampleInputCondition1"]')).sendKeys(1)
 
     // browser.sleep(1000)
 
@@ -211,7 +209,7 @@ describe('Test Suite', function() {
 
     // browser.sleep(1000)
 
-    element(by.xpath('//*[@id="exampleInputCondition1"]')).sendKeys('Healthy')
+    element(by.xpath('//*[@id="exampleInputCondition1"]')).sendKeys('1')
 
     // browser.sleep(1000)
 
@@ -243,14 +241,10 @@ describe('Test Suite', function() {
 
     // browser.sleep(1000)
 
-    var disbilityIncomeInsurance = element(by.xpath('//*[@id="mat-option-0"]/span'))
-    var lifeInsurance = element(by.xpath('//*[@id="mat-option-1"]/span'))
-    var healthInsurance = element(by.xpath('//*[@id="mat-option-2"]/span'))
-    var criticalIllnessInsurance = element(by.xpath('//*[@id="mat-option-3"]/span'))
+    var lifeInsurance = element(by.xpath('//*[@id="mat-option-0"]/span'))
+    var criticalIllnessInsurance = element(by.xpath('//*[@id="mat-option-1"]/span'))
 
-    expect(disbilityIncomeInsurance.getText()).toEqual('Not Applicable')
     expect(lifeInsurance.getText()).toEqual('Life Insurance')
-    expect(healthInsurance.getText()).toEqual('Not Applicable')
     expect(criticalIllnessInsurance.getText()).toEqual('Critical illness insurance')
 
     // browser.sleep(3000)
@@ -323,7 +317,7 @@ describe('Test Suite', function() {
 
     // browser.sleep(1000)
 
-    element(by.xpath('//*[@id="exampleInputCondition1"]')).sendKeys('Healthy');
+    element(by.xpath('//*[@id="exampleInputCondition1"]')).sendKeys(1);
 
     // browser.sleep(1000)
 

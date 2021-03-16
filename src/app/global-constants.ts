@@ -12,6 +12,7 @@ export class GlobalConstantsRegister {
     public static PLEASE_PROVIDE_A_VALID_EMAIL = 'please provide a valid email'
     public static PASSWORD_REQUIREMENT = 'at least 8 characters in length, lowercase and uppercase letters, numbers and special characters'
     public static SUCCESSFULLY_REGISTER = 'successfully register'
+    public static NUMBERS_ONLY_NOT_EXCEEDING_3 = 'numbers only not exceeding 3'
 }
 
 export class GlobalConstantInsurance {

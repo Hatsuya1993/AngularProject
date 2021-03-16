@@ -20,10 +20,11 @@ export class GuestLoginComponent implements OnInit {
   address = GlobalConstants.ADDRESS
   please_include_all_details = GlobalConstantsRegister.PLEASE_INCLUDE_ALL_DETAILS
   please_provide_a_valid_email = GlobalConstantsRegister.PLEASE_PROVIDE_A_VALID_EMAIL
+  numbers_only_not_exceeding_3 = GlobalConstantsRegister.NUMBERS_ONLY_NOT_EXCEEDING_3
 
   inputEmail = new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")])
   inputName = new FormControl('', Validators.required)
-  inputCondition = new FormControl('', Validators.required)
+  inputCondition = new FormControl('', [Validators.required, Validators.pattern(/^-?(0|[1-3]\d*)?$/)])
   inputAge = new FormControl('', Validators.required)
   timer: boolean = false;
 
@@ -43,8 +44,8 @@ export class GuestLoginComponent implements OnInit {
       name: this.inputName.value,
       password: '',
       email: this.inputEmail.value,
-      condition: this.inputCondition.value,
-      age: this.inputAge.value
+      condition: parseInt(this.inputCondition.value),
+      age: parseInt(this.inputAge.value)
     })
     this.route.navigate([`/user/${this.inputName.value}`])
   }

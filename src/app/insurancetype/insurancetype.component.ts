@@ -16,7 +16,7 @@ export class InsurancetypeComponent implements OnInit {
   at_least_one_insurance_is_required = GlobalConstantInsurance.AT_LEAST_ONE_INSURANCE_IS_REQUIRED
   submit = GlobalConstants.SUBMIT
   ageCheck: number
-  conditionCheck: string
+  conditionCheck: number
   emailCheck: string
   nameCheck: string
 
@@ -36,7 +36,7 @@ export class InsurancetypeComponent implements OnInit {
     this.conditionCheck = this.mainService.loggedInUser.condition
     this.emailCheck = this.mainService.loggedInUser.email
     this.nameCheck = this.mainService.loggedInUser.name
-    this.insuranceList = [this.ageCheck >= 50 ? 'Not Applicable' : 'Disability income insurance', this.ageCheck >= 70 ? 'Not Applicable' : 'Life Insurance', this.ageCheck >= 50 ? 'Not Applicable' : 'Health Insurance', this.ageCheck >= 70 ? 'Not Applicable' : 'Critical illness insurance'];
+    this.insuranceList = [this.ageCheck >= 50 || this.conditionCheck > 2 ? 'Not Applicable' : 'Disability income insurance', this.ageCheck >= 70 ? 'Not Applicable' : 'Life Insurance', this.ageCheck >= 50 ? 'Not Applicable' : 'Health Insurance', this.ageCheck >= 70 ? 'Not Applicable' : 'Critical illness insurance'];
     this.selection.setValue('')
   }
 

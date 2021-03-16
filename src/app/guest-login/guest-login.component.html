@@ -12,7 +12,12 @@
         </div>
         <div class="mb-3">
             <label for="exampleInputCondition1" class="form-label">{{condition | titlecase}}</label>
-            <input [formControl]='inputCondition' class="form-control" id="exampleInputCondition1">
+            <input [formControl]='inputCondition' class="form-control" id="exampleInputCondition1"
+                [class.is-invalid]="inputCondition.invalid && inputCondition.touched">
+        </div>
+        <div *ngIf="(inputCondition.invalid && inputCondition.touched) || inputCondition.dirty">
+            <small *ngIf="inputCondition.errors?.pattern" class="text-danger">{{numbers_only_not_exceeding_3 |
+                titlecase}}</small>
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">{{email | titlecase}} {{address}}</label>
@@ -23,7 +28,7 @@
             <small *ngIf="inputEmail.errors?.pattern" class="text-danger">{{please_provide_a_valid_email |
                 titlecase}}</small>
         </div>
-        <button id="submitGuest" [disabled]="inputEmail.invalid" type="button" (click)="submitDetails()"
-            class="btn btn-primary">{{continue | titlecase}}</button>
+        <button id="submitGuest" [disabled]="inputEmail.invalid || inputCondition.invalid" type="button"
+            (click)="submitDetails()" class="btn btn-primary">{{continue | titlecase}}</button>
     </form>
 </div>
