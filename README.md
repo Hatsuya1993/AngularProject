@@ -41,12 +41,12 @@ https://www.mockapi.io/
 1) Fork or clone the repository
 2) cd to the directory of the root folder (it should look like the picture above when viewed from the code editor)
 3) npm install the dependencies
-4) From the script package.json, type npm run start in the cli to run the application
+4) From the script package.json, type `npm run start` in the cli to run the application
 5) From the chrome browser go to the required server localhost://4200
 
 ## Testing
 
-1) From the cli, in the root folder location type protractor Conf/Conf.js to run the test
+1) From the cli, in the root folder location type `protractor Conf/Conf.js` to run the test
 2) From the root location, right click html file called ProtractorTestReport and open in default browser to view a more detailed view of the test results
 
 ## Errors experience
