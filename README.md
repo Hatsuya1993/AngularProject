@@ -28,6 +28,10 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Anything else written here is by the Author himself
 
+![Capture](https://user-images.githubusercontent.com/60688830/111907920-3987ee00-8a92-11eb-82f1-af2a130a6f1a.JPG)
+
+This is how the root folder looks with all the files
+
 ## How to use the App
 
 1) Fork or clone the repository
