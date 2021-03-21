@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GlobalConstants, GlobalConstantsLogin, GlobalConstantsRegister, GlobalConstantInsurance } from '../global-constants'
+import { GlobalConstants, GlobalConstantsLogin, GlobalConstantsRegister, GlobalConstantInsurance, GlobalConstantsLoginAuth } from '../global-constants'
 import { FormControl } from '@angular/forms'
 import { MainService } from '../main.service'
 import { HttpClient } from '@angular/common/http'
@@ -12,7 +12,7 @@ import { Router } from '@angular/router'
 })
 export class LoginUserComponent implements OnInit {
 
-  url = 'https://604c607fd3e3e10017d518a0.mockapi.io/Users'
+  url = GlobalConstantsLogin.URL
 
   name = GlobalConstants.NAME
   address = GlobalConstants.ADDRESS
@@ -36,9 +36,10 @@ export class LoginUserComponent implements OnInit {
   successRegister: boolean = false
 
   submitDetails() {
+
     if (this.inputName.value && this.inputPassword.value) {
       this.http.get(this.url + `?password=${this.inputPassword.value}`).toPromise().then((data) => {
-        if (data == false) {
+        if (data[0] == undefined) {
           this.errorLogin = true
           this.inputName.setValue('')
           this.inputPassword.setValue('')
@@ -47,32 +48,47 @@ export class LoginUserComponent implements OnInit {
           }, 4000);
           return
         }
-        // this.results = !this.results
-        this.mainService.login(data[0])
-        this.route.navigate([`/user/${data[0].name}`])
-        return
+        this.mainService.login({
+          name: data[0].name,
+          password: data[0].password,
+          age: data[0].age,
+          email: data[0].email,
+          healthCondition: data[0].healthCondition
+        })
+
+        this.http.post(GlobalConstantsLoginAuth.URL, {
+          name: data[0].name,
+          status: true
+        }).toPromise().then((data) => {
+          this.route.navigate([`/user/${data['name']}`])
+          return
+        })
       })
-      return
     }
-    this.error = true
-    this.inputName.setValue('')
-    this.inputPassword.setValue('')
-    setTimeout(() => {
-      this.error = false
-    }, 4000);
+    else {
+      this.error = true
+      this.inputName.setValue('')
+      this.inputPassword.setValue('')
+      setTimeout(() => {
+        this.error = false
+      }, 4000);
+    }
   }
 
   constructor(public mainService: MainService, private http: HttpClient, private route: Router) { }
 
   ngOnInit(): void {
+
     this.applied = this.mainService.applied
     this.successRegister = this.mainService.successRegister
+
     setTimeout(() => {
       this.applied = false
       this.mainService.applied = false
       this.successRegister = false
       this.mainService.successRegister = false
     }, 4000);
+
   }
 
 }

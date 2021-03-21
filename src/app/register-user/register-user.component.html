@@ -9,14 +9,18 @@
       <label for="exampleInputAge1" class="form-label">{{age | titlecase}}</label>
       <input [formControl]='inputAge' class="form-control" id="exampleInputAge1">
     </div>
-    <div class="mb-3">
-      <label for="exampleInputCondition1" class="form-label">{{condition | titlecase}}</label>
-      <input [formControl]='inputCondition' class="form-control" id="exampleInputCondition1"
-        [class.is-invalid]="inputCondition.invalid && inputCondition.touched">
-    </div>
-    <div *ngIf="(inputCondition.invalid && inputCondition.touched) || inputCondition.dirty">
-      <small *ngIf="inputCondition.errors?.pattern" class="text-danger">{{numbers_only_not_exceeding_3 |
-        titlecase}}</small>
+    <div>
+      <label for="checkboxSmoke" class="form-label">{{health | titlecase}} {{condition | titlecase}}</label>
+      <span id="checkboxSmoke" class="example-list-section">
+        <ul class="p-0">
+          <li *ngFor="let subtask of task.subtasks">
+            <mat-checkbox [(ngModel)]="subtask.completed" [color]="subtask.color" (ngModelChange)="updateAllComplete()"
+              name="subtask.name">
+              {{subtask.name}}
+            </mat-checkbox>
+          </li>
+        </ul>
+      </span>
     </div>
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">{{email | titlecase}} {{address}}</label>
@@ -34,8 +38,8 @@
     <div *ngIf="(inputPassword.invalid && inputPassword.touched)">
       <small *ngIf="inputPassword.errors?.pattern" class="text-danger">{{password_requirement | titlecase}}</small>
     </div>
-    <button [disabled]="inputEmail.invalid || inputPassword.invalid || inputCondition.invalid" id="registerButton"
-      type="button" (click)="submitDetails()" class="btn btn-primary">{{register |
+    <button [disabled]="inputEmail.invalid || inputPassword.invalid" id="registerButton" type="button"
+      (click)="submitDetails()" class="btn btn-primary">{{register |
       titlecase}}</button>
   </form>
 </div>

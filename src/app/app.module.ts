@@ -13,6 +13,7 @@ import { InsurancetypeComponent } from './insurancetype/insurancetype.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MatSelectModule } from '@angular/material/select';
 import { GuestLoginComponent } from './guest-login/guest-login.component'
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { GuestLoginComponent } from './guest-login/guest-login.component'
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

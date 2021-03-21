@@ -1,41 +1,40 @@
-// import {browser, element, by,} from 'protractor'
-// import { protractor } from 'protractor/built/ptor';
+// import {
+//   browser,
+//   element,
+//   by,
+// } from 'protractor'
+// import {
+//   protractor
+// } from 'protractor/built/ptor';
 
-const { browser, element } = require("protractor");
+const {
+  browser,
+  element,
+  by
+} = require("protractor");
+const {
+  protractor
+} = require("protractor/built/ptor");
 
-describe('Test Suite', function() {
+describe('Test Suite', function () {
 
-  it('Successfull register for new users', function() {
+  it('Successfull register for new users', function () {
 
     browser.get('http://localhost:4200/login');
 
     element(by.xpath('//*[@id="navbarNav"]/ul/li[1]/a')).click()
 
-    // browser.sleep(1000)
+    element(by.xpath('//*[@id="exampleInputName1"]')).sendKeys('Qaz')
 
-    element(by.xpath('//*[@id="exampleInputName1"]')).sendKeys('Hazrul')
+    element(by.xpath('//*[@id="exampleInputAge1"]')).sendKeys('26')
 
-    // browser.sleep(1000)
+    element(by.xpath('//*[@id="mat-checkbox-8"]/label/span[1]')).click()
 
-    element(by.xpath('//*[@id="exampleInputAge1"]')).sendKeys('56')
+    element(by.xpath('//*[@id="exampleInputEmail1"]')).sendKeys('hazrul@hotmail.com')
 
-    // browser.sleep(1000)
-
-    element(by.xpath('//*[@id="exampleInputCondition1"]')).sendKeys(1)
-
-    // browser.sleep(1000)
-
-    element(by.xpath('//*[@id="exampleInputEmail1"]')).sendKeys('hazrul@hot.com')
-
-    // browser.sleep(1000)
-
-    element(by.xpath('//*[@id="exampleInputPassword1"]')).sendKeys('!Qaz123456')
-
-    // browser.sleep(1000)
+    element(by.xpath('//*[@id="exampleInputPassword1"]')).sendKeys('!Qaz12345')
 
     element(by.xpath('//*[@id="registerButton"]')).click()
-
-    // browser.sleep(1000)
 
     var name = element(by.xpath('//*[@id="name"]'))
     var password = element(by.xpath('//*[@id="password"]'))
@@ -43,320 +42,111 @@ describe('Test Suite', function() {
     expect(name.getText()).toEqual('Name')
     expect(password.getText()).toEqual('Password')
 
-    // browser.sleep(1000)
-
-    // var success = element(by.xpath('//*[@id="successRegister"]'))
-
-    // expect(success.getText()).toEqual('successfully register')
   })
 
-  it('Successfully logged in and retrieving the greeting', function() {
-    browser.get('http://localhost:4200/login');
-
-    element(by.xpath('//*[@id="exampleInputEmail1"]')).sendKeys('Hazrul');
-
-    // browser.sleep(1000)
-
-    element(by.xpath('//*[@id="exampleInputPassword1"]')).sendKeys('!Qaz123456');
-
-    // browser.sleep(1000)
-
-    element(by.xpath('//*[@id="submitButton"]')).click()
-
-    // browser.sleep(1000)
-
-    var greeting = element(by.xpath('//*[@id="greeting"]'))
-
-    expect(greeting.getText()).toEqual('Hello Hazrul')
-
-    // browser.sleep(1000)
-
-  });
-
-  it('Unsuccessful login attempt', function() {
+  it('Login success', function () {
 
     browser.get('http://localhost:4200/login');
 
-    element(by.xpath('//*[@id="exampleInputEmail1"]')).sendKeys('qaz');
+    element(by.xpath('//*[@id="exampleInputEmail1"]')).sendKeys('Qaz')
 
-    // browser.sleep(1000)
+    element(by.xpath('//*[@id="exampleInputPassword1"]')).sendKeys('!Qaz12345')
 
-    element(by.xpath('//*[@id="exampleInputPassword1"]')).sendKeys('zxc');
-
-    // browser.sleep(1000)
-
-    element(by.xpath('//*[@id="submitButton"]')).click()
-
-    // browser.sleep(500)
-
-    var greeting = element(by.xpath('//*[@id="greeting"]'))
-
-    expect(greeting.getText()).toEqual('Hello Hazrul')
-
-    // browser.sleep(1000)
-
-    // var unsuccess = element(by.xpath('//*[@id="errorLogin"]'))
-
-    // expect(unsuccess.getText()).toEqual('Submit')
-
+    element(by.xpath('//*[@id="submitButton"]')).click().then(function () {
+      browser.waitForAngular();
+      expect(browser.getCurrentUrl()).toEqual("http://localhost:4200/user/Qaz");
+    })
   })
 
-  it('Logout from user', function() {
+  it('Login unsuccessful', function () {
 
     browser.get('http://localhost:4200/login');
 
-    element(by.xpath('//*[@id="exampleInputEmail1"]')).sendKeys('Hazrul');
+    element(by.xpath('//*[@id="exampleInputEmail1"]')).sendKeys('rfv')
 
-    // browser.sleep(1000)
+    element(by.xpath('//*[@id="exampleInputPassword1"]')).sendKeys('rfv')
 
-    element(by.xpath('//*[@id="exampleInputPassword1"]')).sendKeys('!Qaz123456');
-
-    // browser.sleep(1000)
-
-    element(by.xpath('//*[@id="submitButton"]')).click()
-
-    // browser.sleep(1000)
-
-    element(by.xpath('//*[@id="logoutButton"]')).click()
-
-    // browser.sleep(1000)
-
-    var name = element(by.xpath('//*[@id="name"]'))
-    var password = element(by.xpath('//*[@id="password"]'))
-
-    expect(name.getText()).toEqual('Name')
-    expect(password.getText()).toEqual('Password')
-
-    // browser.sleep(1000)
-
+    element(by.xpath('//*[@id="submitButton"]')).click().then(function () {
+      browser.waitForAngular();
+      expect(browser.getCurrentUrl()).toEqual("http://localhost:4200/user/Qaz");
+    })
   })
 
-    it('All Insurance available for age < 50', function() {
+  it('Insurance registration', function () {
 
     browser.get('http://localhost:4200/login');
 
-    element(by.xpath('//*[@id="navbarNav"]/ul/li[1]/a')).click()
+    element(by.xpath('//*[@id="exampleInputEmail1"]')).sendKeys('Qaz')
 
-    // browser.sleep(1000)
-
-    element(by.xpath('//*[@id="exampleInputName1"]')).sendKeys('Hazrul')
-
-    // browser.sleep(1000)
-
-    element(by.xpath('//*[@id="exampleInputAge1"]')).sendKeys('24')
-
-    // browser.sleep(1000)
-
-    element(by.xpath('//*[@id="exampleInputCondition1"]')).sendKeys(1)
-
-    // browser.sleep(1000)
-
-    element(by.xpath('//*[@id="exampleInputEmail1"]')).sendKeys('hazrul@hot.com')
-
-    // browser.sleep(1000)
-
-    element(by.xpath('//*[@id="exampleInputPassword1"]')).sendKeys('!Qaz1234567')
-
-    // browser.sleep(1000)
-
-    element(by.xpath('//*[@id="registerButton"]')).click()
-
-    // browser.sleep(1000)
-
-    element(by.xpath('//*[@id="exampleInputEmail1"]')).sendKeys('Hazrul');
-
-    // browser.sleep(1000)
-
-    element(by.xpath('//*[@id="exampleInputPassword1"]')).sendKeys('!Qaz1234567');
-
-    // browser.sleep(1000)
+    element(by.xpath('//*[@id="exampleInputPassword1"]')).sendKeys('!Qaz12345')
 
     element(by.xpath('//*[@id="submitButton"]')).click()
 
-    // browser.sleep(1000)
+    element(by.xpath('//*[@id="insuranceSelect"]/div/div[1]')).click()
 
-    element(by.xpath('//*[@id="insuranceSelect"]')).click()
+    element(by.xpath('//*[@id="mat-option-0"]/mat-pseudo-checkbox')).click()
 
-    // browser.sleep(1000)
-
-    var disbilityIncomeInsurance = element(by.xpath('//*[@id="mat-option-0"]/span'))
-    var lifeInsurance = element(by.xpath('//*[@id="mat-option-1"]/span'))
-    var healthInsurance = element(by.xpath('//*[@id="mat-option-2"]/span'))
-    var criticalIllnessInsurance = element(by.xpath('//*[@id="mat-option-3"]/span'))
-
-    expect(disbilityIncomeInsurance.getText()).toEqual('Disability income insurance')
-    expect(lifeInsurance.getText()).toEqual('Life Insurance')
-    expect(healthInsurance.getText()).toEqual('Health Insurance')
-    expect(criticalIllnessInsurance.getText()).toEqual('Critical illness insurance')
-
-    // browser.sleep(3000)
-
-  })
-
-    it('Some Insurance available for age > 56', function() {
-
-    browser.get('http://localhost:4200/login');
-
-    element(by.xpath('//*[@id="navbarNav"]/ul/li[1]/a')).click()
-
-    // browser.sleep(1000)
-
-    element(by.xpath('//*[@id="exampleInputName1"]')).sendKeys('Hazrul')
-
-    // browser.sleep(1000)
-
-    element(by.xpath('//*[@id="exampleInputAge1"]')).sendKeys('56')
-
-    // browser.sleep(1000)
-
-    element(by.xpath('//*[@id="exampleInputCondition1"]')).sendKeys('1')
-
-    // browser.sleep(1000)
-
-    element(by.xpath('//*[@id="exampleInputEmail1"]')).sendKeys('hazrul@hot.com')
-
-    // browser.sleep(1000)
-
-    element(by.xpath('//*[@id="exampleInputPassword1"]')).sendKeys('!Qaz12345678')
-
-    // browser.sleep(1000)
-
-    element(by.xpath('//*[@id="registerButton"]')).click()
-
-    // browser.sleep(1000)
-
-    element(by.xpath('//*[@id="exampleInputEmail1"]')).sendKeys('Hazrul');
-
-    // browser.sleep(1000)
-
-    element(by.xpath('//*[@id="exampleInputPassword1"]')).sendKeys('!Qaz12345678');
-
-    // browser.sleep(1000)
-
-    element(by.xpath('//*[@id="submitButton"]')).click()
-
-    // browser.sleep(1000)
-
-    element(by.xpath('//*[@id="insuranceSelect"]')).click()
-
-    // browser.sleep(1000)
-
-    var lifeInsurance = element(by.xpath('//*[@id="mat-option-0"]/span'))
-    var criticalIllnessInsurance = element(by.xpath('//*[@id="mat-option-1"]/span'))
-
-    expect(lifeInsurance.getText()).toEqual('Life Insurance')
-    expect(criticalIllnessInsurance.getText()).toEqual('Critical illness insurance')
-
-    // browser.sleep(3000)
-
-  })
-
-  it('Purchasing service/insurance by placing an order as a registered user', function() {
-
-    browser.get('http://localhost:4200/login');
-
-    // browser.sleep(1000)
-
-    element(by.xpath('//*[@id="exampleInputEmail1"]')).sendKeys('Hazrul');
-
-    // browser.sleep(1000)
-
-    element(by.xpath('//*[@id="exampleInputPassword1"]')).sendKeys('!Qaz1234567');
-
-    // browser.sleep(1000)
-
-    element(by.xpath('//*[@id="submitButton"]')).click()
-
-    // browser.sleep(1000)
-
-    element(by.xpath('//*[@id="insuranceSelect"]')).click()
-
-    // browser.sleep(1000)
-
-    var disbilityIncomeInsurance = element(by.xpath('//*[@id="mat-option-0"]/mat-pseudo-checkbox'))
-    var lifeInsurance = element(by.xpath('//*[@id="mat-option-1"]/mat-pseudo-checkbox'))
-    var healthInsurance = element(by.xpath('//*[@id="mat-option-2"]/mat-pseudo-checkbox'))
-    var criticalIllnessInsurance = element(by.xpath('//*[@id="mat-option-3"]/mat-pseudo-checkbox'))
-
-    disbilityIncomeInsurance.click()
-    lifeInsurance.click()
-    healthInsurance.click()
-    criticalIllnessInsurance.click()
-
-    // browser.sleep(1000)
-    
     element(by.xpath('//*[@id="submitSelection"]')).click()
 
-    // browser.sleep(1000)
+    browser.sleep(3000)
 
+    expect(browser.getCurrentUrl()).toEqual("http://localhost:4200/login");
     var name = element(by.xpath('//*[@id="name"]'))
     var password = element(by.xpath('//*[@id="password"]'))
-
     expect(name.getText()).toEqual('Name')
     expect(password.getText()).toEqual('Password')
 
-    // browser.sleep(3000)
-
   })
 
-    it('Purchasing service/insurance by placing an order as a registered user as guest', function() {
+  it('Login as guest', function () {
 
     browser.get('http://localhost:4200/login');
-
-    // browser.sleep(1000)
 
     element(by.xpath('//*[@id="loginGuestButton"]')).click()
 
-    // browser.sleep(1000)
+    element(by.xpath('//*[@id="exampleInputName1"]')).sendKeys('frank')
 
-    element(by.xpath('//*[@id="exampleInputName1"]')).sendKeys('zal');
+    element(by.xpath('//*[@id="exampleInputAge1"]')).sendKeys('23')
 
-    // browser.sleep(1000)
+    element(by.xpath('//*[@id="mat-checkbox-8"]/label/span[1]')).click()
 
-    element(by.xpath('//*[@id="exampleInputAge1"]')).sendKeys('25');
+    element(by.xpath('//*[@id="exampleInputEmail1"]')).sendKeys('gal123@hotmail.com')
 
-    // browser.sleep(1000)
+    element(by.xpath('//*[@id="submitGuest"]')).click().then(function () {
+      browser.waitForAngular();
+      expect(browser.getCurrentUrl()).toEqual("http://localhost:4200/user/frank");
+    })
+  })
 
-    element(by.xpath('//*[@id="exampleInputCondition1"]')).sendKeys(1);
+  it('Login as guest and apply insurance', function () {
 
-    // browser.sleep(1000)
+    browser.get('http://localhost:4200/login');
 
-    element(by.xpath('//*[@id="exampleInputEmail1"]')).sendKeys('haz@hot.com');
+    element(by.xpath('//*[@id="loginGuestButton"]')).click()
 
-    // browser.sleep(1000)
+    element(by.xpath('//*[@id="exampleInputName1"]')).sendKeys('frank')
+
+    element(by.xpath('//*[@id="exampleInputAge1"]')).sendKeys('23')
+
+    element(by.xpath('//*[@id="mat-checkbox-8"]/label/span[1]')).click()
+
+    element(by.xpath('//*[@id="exampleInputEmail1"]')).sendKeys('gal123@hotmail.com')
 
     element(by.xpath('//*[@id="submitGuest"]')).click()
 
-    // browser.sleep(1000)
+    element(by.xpath('//*[@id="insuranceSelect"]/div/div[1]')).click()
 
-    element(by.xpath('//*[@id="insuranceSelect"]')).click()
+    element(by.xpath('//*[@id="mat-option-0"]/mat-pseudo-checkbox')).click()
 
-    // browser.sleep(1000)
-
-    var disbilityIncomeInsurance = element(by.xpath('//*[@id="mat-option-0"]/mat-pseudo-checkbox'))
-    var lifeInsurance = element(by.xpath('//*[@id="mat-option-1"]/mat-pseudo-checkbox'))
-    var healthInsurance = element(by.xpath('//*[@id="mat-option-2"]/mat-pseudo-checkbox'))
-    var criticalIllnessInsurance = element(by.xpath('//*[@id="mat-option-3"]/mat-pseudo-checkbox'))
-
-    disbilityIncomeInsurance.click()
-    lifeInsurance.click()
-    healthInsurance.click()
-    criticalIllnessInsurance.click()
-
-    // browser.sleep(1000)
-    
     element(by.xpath('//*[@id="submitSelection"]')).click()
 
-    // browser.sleep(1000)
+    browser.sleep(3000)
 
+    expect(browser.getCurrentUrl()).toEqual("http://localhost:4200/login");
     var name = element(by.xpath('//*[@id="name"]'))
     var password = element(by.xpath('//*[@id="password"]'))
-
     expect(name.getText()).toEqual('Name')
     expect(password.getText()).toEqual('Password')
 
-    // browser.sleep(3000)
-
   })
-
-});
+})

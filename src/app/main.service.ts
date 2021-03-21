@@ -8,17 +8,26 @@ export class MainService {
 
   route: Router
 
-  loggedInUser: { name, age, email, condition }
+  loggedInUser: { name, age, password, email, healthCondition }
+  loginStatus: { name, status }
 
   applied: boolean
   successRegister: boolean
 
-  login(user: { name, password, age, email, condition }) {
+  login(user: { name, password, age, email, healthCondition }) {
     this.loggedInUser = {
       name: user.name,
       age: user.age,
+      password: user.password,
       email: user.email,
-      condition: user.condition
+      healthCondition: user.healthCondition
+    }
+  }
+
+  loginAuth(user: { name, status }) {
+    this.loginStatus = {
+      name: user.name,
+      status: user.status
     }
   }
 

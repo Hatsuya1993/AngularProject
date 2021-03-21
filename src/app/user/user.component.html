@@ -1,18 +1,27 @@
-<div class="jumbotron jumbotron-fluid py-3">
-  <div class="container">
-    <h1 id="greeting" class="display-4">{{hello | titlecase}} {{selected.name}}</h1>
-    <h2>{{age | titlecase}} : {{selected.age}}</h2>
-    <h3>{{email | titlecase}} : {{selected.email}}</h3>
-    <h4>{{condition | titlecase}} : {{selected.condition | titlecase}}</h4>
-    <button id="logoutButton" routerLink="/login" type="button" class="btn btn-danger">{{logout | titlecase}}</button>
+<div class="container" *ngIf="selected">
+  <div class="jumbotron jumbotron-fluid py-3">
+    <div class="container">
+      <h1 id="greeting" class="display-4">{{hello | titlecase}} {{selected.name}}</h1>
+      <h2>{{age | titlecase}} : {{selected.age}}</h2>
+      <h3>{{email | titlecase}} : {{selected.email}}</h3>
+      <h4>{{health | titlecase}} {{condition | titlecase}}</h4>
+      <div *ngFor="let item of checkHealth">
+        <p class="m-0" *ngIf="item.completed">{{item.name}}
+        </p>
+      </div>
+      <button *ngIf="logoutButton" id="logoutButton" routerLink="/login" type="button" (click)="logOutAccount()"
+        class="btn btn-danger mt-3">{{logout |
+        titlecase}}</button>
+      <p class="m-0 pt-3">{{you_are_entitled_for_these_insurances_based_on_your_profile | titlecase}}</p>
+    </div>
   </div>
-</div>
-<app-insurancetype *ngIf="!showInsurance"></app-insurancetype>
-<div *ngIf="showInsurance" class="container py-2">
-  <h2>{{insurance | titlecase}}</h2>
-  <ul>
-    <li *ngFor="let item of registeredInsurance">
-      {{item}}
-    </li>
-  </ul>
+  <app-insurancetype *ngIf="!showInsurance"></app-insurancetype>
+  <div *ngIf="showInsurance" class="container py-2">
+    <h2>{{insurance | titlecase}}</h2>
+    <ul>
+      <li *ngFor="let item of registeredInsurance">
+        {{item}}
+      </li>
+    </ul>
+  </div>
 </div>

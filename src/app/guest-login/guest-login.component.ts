@@ -3,6 +3,14 @@ import { FormControl, Validators } from '@angular/forms';
 import { GlobalConstantsGuest, GlobalConstants, GlobalConstantsRegister } from '../global-constants';
 import { MainService } from '../main.service'
 import { Router } from '@angular/router'
+import { ThemePalette } from '@angular/material/core';
+
+export interface Task {
+  name: string;
+  completed: boolean;
+  color: ThemePalette;
+  subtasks?: Task[];
+}
 
 @Component({
   selector: 'app-guest-login',
@@ -18,22 +26,23 @@ export class GuestLoginComponent implements OnInit {
   email = GlobalConstants.EMAIL
   condition = GlobalConstants.CONDITION
   address = GlobalConstants.ADDRESS
+  health = GlobalConstantsRegister.HEALTH
+
   please_include_all_details = GlobalConstantsRegister.PLEASE_INCLUDE_ALL_DETAILS
   please_provide_a_valid_email = GlobalConstantsRegister.PLEASE_PROVIDE_A_VALID_EMAIL
   numbers_only_not_exceeding_3 = GlobalConstantsRegister.NUMBERS_ONLY_NOT_EXCEEDING_3
 
   inputEmail = new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")])
   inputName = new FormControl('', Validators.required)
-  inputCondition = new FormControl('', [Validators.required, Validators.pattern(/^-?(0|[1-3]\d*)?$/)])
   inputAge = new FormControl('', Validators.required)
+  healthCondition = new FormControl('', Validators.required)
   timer: boolean = false;
 
   submitDetails() {
-    if (this.inputEmail.value === '' || this.inputName.value === '' || this.inputCondition.value === '' || this.inputAge.value === '') {
+    if (this.inputEmail.value === '' || this.inputName.value === '' || this.inputAge.value === '') {
       this.inputAge.setValue('')
       this.inputEmail.setValue('')
       this.inputName.setValue('')
-      this.inputCondition.setValue('')
       this.timer = true
       setTimeout(() => {
         this.timer = false
@@ -44,8 +53,8 @@ export class GuestLoginComponent implements OnInit {
       name: this.inputName.value,
       password: '',
       email: this.inputEmail.value,
-      condition: parseInt(this.inputCondition.value),
-      age: parseInt(this.inputAge.value)
+      age: parseInt(this.inputAge.value),
+      healthCondition: this.task.subtasks
     })
     this.route.navigate([`/user/${this.inputName.value}`])
   }
@@ -53,6 +62,28 @@ export class GuestLoginComponent implements OnInit {
   constructor(public mainService: MainService, private route: Router) { }
 
   ngOnInit(): void {
+  }
+
+  task: Task = {
+    name: 'Indeterminate',
+    completed: false,
+    color: 'primary',
+    subtasks: [
+      { name: 'Diabetes', completed: false, color: 'primary' },
+      { name: 'High-Blood Pressure', completed: false, color: 'primary' },
+      { name: 'Recurred Stroke', completed: false, color: 'primary' },
+      { name: 'Overweight', completed: false, color: 'primary' },
+      { name: 'HIV/AIDS', completed: false, color: 'primary' },
+      { name: 'Smoker', completed: false, color: 'primary' },
+      { name: 'Recurred Heart Attack', completed: false, color: 'primary' },
+      { name: 'None', completed: false, color: 'primary' },
+    ]
+  };
+
+  allComplete: boolean = false;
+
+  updateAllComplete() {
+    this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
   }
 
 }

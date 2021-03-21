@@ -1,10 +1,11 @@
 export class GlobalConstantsNavBar {
-    public static FAKEATINSURANCE = 'Fake@Insurance'
+    public static FAKEATINSURANCE = 'fund guard'
 }
 
 export class GlobalConstantsLogin {
     public static LOGIN_AS_GUEST = 'login as guest'
     public static ERROR_LOGIN_INFO = 'error login info'
+    public static URL = 'https://604c607fd3e3e10017d518a0.mockapi.io/Users'
 }
 
 export class GlobalConstantsRegister {
@@ -13,17 +14,27 @@ export class GlobalConstantsRegister {
     public static PASSWORD_REQUIREMENT = 'at least 8 characters in length, lowercase and uppercase letters, numbers and special characters'
     public static SUCCESSFULLY_REGISTER = 'successfully register'
     public static NUMBERS_ONLY_NOT_EXCEEDING_3 = 'numbers only not exceeding 3'
+    public static HEALTH = 'health'
 }
 
 export class GlobalConstantInsurance {
     public static PICK_INSURANCE_TYPE = 'pick insurance type'
     public static INSURANCE = 'insurance'
     public static AT_LEAST_ONE_INSURANCE_IS_REQUIRED = 'at least one insurance is required'
-    public static SUCCESSFULLY_APPLIED_LOGIN_TO_VIEW = 'successfully applied, login to view'
+    public static SUCCESSFULLY_APPLIED_LOGIN_TO_VIEW = 'successfully applied'
+    public static URL = 'http://604c607fd3e3e10017d518a0.mockapi.io/RegisteredInsurance'
 }
 
 export class GlobalConstantsGuest {
     public static KEY_GUEST_DETAILS = 'key guest details'
+}
+
+export class GlobalConstantsUsers {
+    public static YOU_ARE_ENTITLED_FOR_THESE_INSURANCES_BASED_ON_YOUR_PROFILE = 'you are entitled for these insurances based on your profile'
+}
+
+export class GlobalConstantsLoginAuth {
+    public static URL = 'https://604c607fd3e3e10017d518a0.mockapi.io/loginAuth'
 }
 
 export class GlobalConstants {
@@ -41,6 +52,7 @@ export class GlobalConstants {
     public static LOGOUT = 'logout'
     public static NAME = 'name'
     public static CONTINUE = 'continue'
+    public static HEALTH = 'health'
 }
 
 

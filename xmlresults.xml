@@ -1,55 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites disabled="0" errors="0" failures="1" tests="8" time="81.643">
- <testsuite name="Test Suite" timestamp="2021-03-16T23:32:14" hostname="localhost" time="81.643" errors="0" tests="8" skipped="0" disabled="0" failures="1">
-  <testcase classname="Test Suite" name="Successfull register for new users" time="14.305" />
-  <testcase classname="Test Suite" name="Successfully logged in and retrieving the greeting" time="6.202" />
-  <testcase classname="Test Suite" name="Unsuccessful login attempt" time="9.356">
-   <failure type="exception" message="Failed: No element found using locator: By(xpath, //*[@id=&quot;greeting&quot;])"><![CDATA[NoSuchElementError: No element found using locator: By(xpath, //*[@id="greeting"])
-    at C:\Users\hal19\AppData\Roaming\npm\node_modules\protractor\built\element.js:814:27
+<testsuites disabled="0" errors="0" failures="1" tests="6" time="61.348">
+ <testsuite name="Test Suite" timestamp="2021-03-21T16:17:45" hostname="localhost" time="61.348" errors="0" tests="6" skipped="0" disabled="0" failures="1">
+  <testcase classname="Test Suite" name="Successfull register for new users" time="11.789" />
+  <testcase classname="Test Suite" name="Login success" time="7.465" />
+  <testcase classname="Test Suite" name="Login unsuccessful" time="9.898">
+   <failure type="toEqual" message="Expected &apos;http://localhost:4200/login&apos; to equal &apos;http://localhost:4200/user/Qaz&apos;."><![CDATA[Error: Failed expectation
+    at C:\Users\hal19\Desktop\Programming\githubtest\testing\angularStudy\angularFirst\projectInsurance\Test\Test.Spec.js:71:39
+    at C:\Users\hal19\AppData\Roaming\npm\node_modules\protractor\built\element.js:804:32
     at ManagedPromise.invokeCallback_ (C:\Users\hal19\AppData\Roaming\npm\node_modules\protractor\node_modules\selenium-webdriver\lib\promise.js:1376:14)
     at TaskQueue.execute_ (C:\Users\hal19\AppData\Roaming\npm\node_modules\protractor\node_modules\selenium-webdriver\lib\promise.js:3084:14)
     at TaskQueue.executeNext_ (C:\Users\hal19\AppData\Roaming\npm\node_modules\protractor\node_modules\selenium-webdriver\lib\promise.js:3067:27)
     at C:\Users\hal19\AppData\Roaming\npm\node_modules\protractor\node_modules\selenium-webdriver\lib\promise.js:2927:27
     at C:\Users\hal19\AppData\Roaming\npm\node_modules\protractor\node_modules\selenium-webdriver\lib\promise.js:668:7
-    at processTicksAndRejections (internal/process/task_queues.js:97:5)Error
-    at ElementArrayFinder.applyAction_ (C:\Users\hal19\AppData\Roaming\npm\node_modules\protractor\built\element.js:459:27)
-    at ElementArrayFinder.<computed> [as getText] (C:\Users\hal19\AppData\Roaming\npm\node_modules\protractor\built\element.js:91:29)
-    at ElementFinder.<computed> [as getText] (C:\Users\hal19\AppData\Roaming\npm\node_modules\protractor\built\element.js:831:22)
-    at UserContext.<anonymous> (C:\Users\hal19\Desktop\Programming\githubtest\testing\angularStudy\angularFirst\projectInsurance\Test\Test.Spec.js:94:21)
-    at C:\Users\hal19\AppData\Roaming\npm\node_modules\protractor\node_modules\jasminewd2\index.js:112:25
-    at new ManagedPromise (C:\Users\hal19\AppData\Roaming\npm\node_modules\protractor\node_modules\selenium-webdriver\lib\promise.js:1077:7)
-    at ControlFlow.promise (C:\Users\hal19\AppData\Roaming\npm\node_modules\protractor\node_modules\selenium-webdriver\lib\promise.js:2505:12)
-    at schedulerExecute (C:\Users\hal19\AppData\Roaming\npm\node_modules\protractor\node_modules\jasminewd2\index.js:95:18)
-    at TaskQueue.execute_ (C:\Users\hal19\AppData\Roaming\npm\node_modules\protractor\node_modules\selenium-webdriver\lib\promise.js:3084:14)
-    at TaskQueue.executeNext_ (C:\Users\hal19\AppData\Roaming\npm\node_modules\protractor\node_modules\selenium-webdriver\lib\promise.js:3067:27)
-From: Task: Run it("Unsuccessful login attempt") in control flow
-    at UserContext.<anonymous> (C:\Users\hal19\AppData\Roaming\npm\node_modules\protractor\node_modules\jasminewd2\index.js:94:19)
-    at attempt (C:\Users\hal19\AppData\Roaming\npm\node_modules\protractor\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:4297:26)
-    at QueueRunner.run (C:\Users\hal19\AppData\Roaming\npm\node_modules\protractor\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:4217:20)
-    at QueueRunner.execute (C:\Users\hal19\AppData\Roaming\npm\node_modules\protractor\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:4199:10)
-    at Spec.queueRunnerFactory (C:\Users\hal19\AppData\Roaming\npm\node_modules\protractor\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:909:35)
-    at Spec.execute (C:\Users\hal19\AppData\Roaming\npm\node_modules\protractor\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:526:10)
-    at UserContext.fn (C:\Users\hal19\AppData\Roaming\npm\node_modules\protractor\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:5340:37)
-    at attempt (C:\Users\hal19\AppData\Roaming\npm\node_modules\protractor\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:4297:26)
-    at QueueRunner.run (C:\Users\hal19\AppData\Roaming\npm\node_modules\protractor\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:4217:20)
-    at runNext (C:\Users\hal19\AppData\Roaming\npm\node_modules\protractor\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:4257:20)
-From asynchronous test: 
-Error
-    at Suite.<anonymous> (C:\Users\hal19\Desktop\Programming\githubtest\testing\angularStudy\angularFirst\projectInsurance\Test\Test.Spec.js:76:3)
-    at addSpecsToSuite (C:\Users\hal19\AppData\Roaming\npm\node_modules\protractor\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:1107:25)
-    at Env.describe (C:\Users\hal19\AppData\Roaming\npm\node_modules\protractor\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:1074:7)
-    at describe (C:\Users\hal19\AppData\Roaming\npm\node_modules\protractor\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:4399:18)
-    at Object.<anonymous> (C:\Users\hal19\Desktop\Programming\githubtest\testing\angularStudy\angularFirst\projectInsurance\Test\Test.Spec.js:6:1)
-    at Module._compile (internal/modules/cjs/loader.js:1176:30)
-    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1196:10)
-    at Module.load (internal/modules/cjs/loader.js:1040:32)
-    at Function.Module._load (internal/modules/cjs/loader.js:929:14)]]>
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)]]>
    </failure>
   </testcase>
-  <testcase classname="Test Suite" name="Logout from user" time="9.672" />
-  <testcase classname="Test Suite" name="All Insurance available for age &lt; 50" time="10.532" />
-  <testcase classname="Test Suite" name="Some Insurance available for age &gt; 56" time="10.563" />
-  <testcase classname="Test Suite" name="Purchasing service/insurance by placing an order as a registered user" time="10.792" />
-  <testcase classname="Test Suite" name="Purchasing service/insurance by placing an order as a registered user as guest" time="10.22" />
+  <testcase classname="Test Suite" name="Insurance registration" time="13.724" />
+  <testcase classname="Test Suite" name="Login as guest" time="6.085" />
+  <testcase classname="Test Suite" name="Login as guest and apply insurance" time="12.383" />
  </testsuite>
 </testsuites>

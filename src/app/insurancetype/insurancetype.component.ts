@@ -16,11 +16,10 @@ export class InsurancetypeComponent implements OnInit {
   at_least_one_insurance_is_required = GlobalConstantInsurance.AT_LEAST_ONE_INSURANCE_IS_REQUIRED
   submit = GlobalConstants.SUBMIT
   ageCheck: number
-  conditionCheck: number
   emailCheck: string
   nameCheck: string
-
-  url = 'http://604c607fd3e3e10017d518a0.mockapi.io/RegisteredInsurance'
+  healthCheck: any
+  url = GlobalConstantInsurance.URL
 
   selection = new FormControl('');
   selected: any
@@ -33,10 +32,10 @@ export class InsurancetypeComponent implements OnInit {
 
   ngOnInit() {
     this.ageCheck = this.mainService.loggedInUser.age
-    this.conditionCheck = this.mainService.loggedInUser.condition
     this.emailCheck = this.mainService.loggedInUser.email
     this.nameCheck = this.mainService.loggedInUser.name
-    this.insuranceList = [this.ageCheck >= 50 || this.conditionCheck > 2 ? 'Not Applicable' : 'Disability income insurance', this.ageCheck >= 70 ? 'Not Applicable' : 'Life Insurance', this.ageCheck >= 50 ? 'Not Applicable' : 'Health Insurance', this.ageCheck >= 70 ? 'Not Applicable' : 'Critical illness insurance'];
+    this.healthCheck = this.mainService.loggedInUser.healthCondition.filter((el) => el.completed === true)
+    this.insuranceList = [this.ageCheck > 75 || this.healthCheck.find(el => el.name === 'Recurred Heart Attack') ? 'Not Applicable' : 'Mental Health (Period up to 100 years) (Age < 75)', this.ageCheck >= 70 ? 'Not Applicable' : 'Life Insurance (Period up to 100 years)', (this.ageCheck <= 15 || this.ageCheck >= 75) || this.healthCheck.find(el => el.name === 'HIV/AIDS') ? 'Not Applicable' : 'HIV/AIDS Insurance (Period up to 80 years) (Age 15 -> 65)', ((this.ageCheck >= 65 || this.ageCheck <= 30) || this.healthCheck.find(el => el.name === 'Diabetes')) ? 'Not Applicable' : 'Diabetes Care (Period up to 80 years) (Age 30 -> 65)'];
     this.selection.setValue('')
   }
 
@@ -55,7 +54,6 @@ export class InsurancetypeComponent implements OnInit {
     this.http.post(this.url, {
       name: this.nameCheck,
       age: this.ageCheck,
-      condition: this.conditionCheck,
       email: this.emailCheck,
       registeredInsurance: this.selected
     }).toPromise().then((data: any) => {
