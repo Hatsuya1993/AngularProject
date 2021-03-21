@@ -32,10 +32,14 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 This is how the root folder looks with all the files
 
+# Temp database used
+
+https://www.mockapi.io/
+
 ## How to use the App
 
 1) Fork or clone the repository
-2) cd to the directory
+2) cd to the directory of the root folder (it should look like the picture above when viewed from the code editor)
 3) npm install the dependencies
 4) From the script package.json, type npm run start in the cli to run the application
 5) From the chrome browser go to the required server localhost://4200
@@ -44,3 +48,10 @@ This is how the root folder looks with all the files
 
 1) From the cli, in the root folder location type protractor Conf/Conf.js to run the test
 2) From the root location, right click html file called ProtractorTestReport and open in default browser to view a more detailed view of the test results
+
+## Errors experience
+
+Any problems experienced while using the application or testing the application during any request, check the mockapi website.
+The website may display an error upon visiting the site (e.g. Your connection is not private). This problem may be dealt in 2 ways.
+1) Waiting for the owner of the site to fix it. 
+2) Change the date and time manually to the past. 
